@@ -161,7 +161,6 @@
                 if(this.y + r  >= gnd.y||this.collisioned())
                 {
                     state.curr= UI.score.curr >= 10 ? state.passed : state.gameOver;
-                    window.parent.postMessage("PASS", 'http://localhost:8080');
                 }
                 
                 break;
@@ -181,7 +180,8 @@
                     SFX.played = true;
                 }
                 }
-                
+            case state.passed :
+                window.parent.postMessage("PASS", 'http://localhost:8080');
                 break;
         }
         this.frame = this.frame%this.animations.length;       
