@@ -1,5 +1,5 @@
  const RAD = Math.PI/180;
- const scrn = document.getElementById('canvas');
+ const scrn = document.getElementById('flappy-Bird-shit6');
  const sctx = scrn.getContext("2d");
  scrn.tabIndex = 1;
  scrn.addEventListener("click",()=>{
