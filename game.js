@@ -323,7 +323,7 @@ function gameLoop() {
     draw();
     frames++
     if (state.curr== state.passed){
-        window.parent.postMessage("stupid_bird", 'http://localhost:8080');
+        window.parent.postMessage("stupid_bird", 'https://dev.tanakorn.space/page');
         return
     }
     requestAnimationFrame(gameLoop);
