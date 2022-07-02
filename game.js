@@ -54,7 +54,7 @@
      getReady : 0,
      Play : 1,
      gameOver : 2,
-
+     passed: 3,
  }
  const SFX = {
      start : new Audio(),
@@ -132,6 +132,7 @@
     x : 50,
     y :100,
     speed : 0,
+    // TODO  : update this value
     gravity : .125,
     thrust : 3.6,
     frame:0,
@@ -159,7 +160,8 @@
                 this.speed += this.gravity;
                 if(this.y + r  >= gnd.y||this.collisioned())
                 {
-                    state.curr = state.gameOver;
+                    state.curr= UI.score.curr >= 10 ? state.passed : state.gameOver;
+                    window.parent.postMessage("PASS", 'http://localhost:8080');
                 }
                 
                 break;
@@ -233,6 +235,7 @@
         }
     }
  };
+
  const UI = {
     getReady : {sprite : new Image()},
     gameOver : {sprite : new Image()},
@@ -342,6 +345,7 @@ gameLoop();
   pipe.update();
   UI.update();
  }
+
  function draw()
  {
     sctx.fillStyle = "#30c0df";
@@ -354,3 +358,10 @@ gameLoop();
     UI.draw();
  }
 
+
+// function isPassedCaptcha(score){
+//     // if(score==10){
+//         console.log(score);
+//     // }
+
+// }
